@@ -6,7 +6,7 @@ Doorboy is a simple and lightweight library for authorization.
 ### 1. Define policy file for each Controller. And define Authorization-Function.
 
 Authorization-Function
-- can be freely naed
+- can be freely named
 - is recommended to be named with corresponding controller's action name. 
 
 if Authorization-Function returns true, it returns {:ok, nil}.
