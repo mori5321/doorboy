@@ -1,5 +1,5 @@
 
-defmodule Doorman do
+defmodule Doorboy do
   defmacro __using__(policy: policy) do
     quote do 
       def authorize(function, opts) do

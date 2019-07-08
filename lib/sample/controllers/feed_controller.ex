@@ -1,5 +1,5 @@
 defmodule Fuga.Controllers.FeedController do
-  use Doorman, policy: Fuga.Policies.FeedControllerPolicy
+  use Doorboy, policy: Fuga.Policies.FeedControllerPolicy
 
   def create do
     user = %Fuga.User{id: 1}

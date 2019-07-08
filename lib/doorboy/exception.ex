@@ -1,4 +1,4 @@
-defmodule Doorman.Exception do
+defmodule Doorboy.Exception do
   defmodule UnauthorizedError do
     defexception message: "Unauthorized Error"
   end

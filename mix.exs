@@ -1,4 +1,4 @@
-defmodule Doorman.MixProject do
+defmodule Doorboy.MixProject do
   use Mix.Project
 
   @description """
@@ -7,7 +7,7 @@ defmodule Doorman.MixProject do
 
   def project do
     [
-      app: :doorman,
+      app: :doorboy,
       version: "0.1.0",
       elixir: "~> 1.8",
       start_permanent: Mix.env() == :prod,
