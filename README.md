@@ -12,7 +12,7 @@ Authorization-Function
 if Authorization-Function returns true, it returns {:ok, nil}.
 if not, it returns {:error, :unauthorized}.
 
-```
+``` hoge_controller_policy.ex
 defmodule Sample.HogeControllerPolicy do
   # ↓authorization function
   def update(user: user, clip: clip) do
@@ -27,7 +27,7 @@ end
 1. set "use Doorboy, policy: YourPolicyFile"  in your Controller
 2. call authorize method wherever you like.
 
-```
+``` hoge_controller.ex
 
 defmodule Sample.HogeController do
   use Doorboy, policy: Sample.HogeControllerPolicy
