@@ -10,7 +10,7 @@ by adding `doorman` to your list of dependencies in `mix.exs`:
 ```elixir
 def deps do
   [
-    {:doorman, "~> 0.1.0"}
+    {:doorboy, "~> 0.1.0"}
   ]
 end
 ```
