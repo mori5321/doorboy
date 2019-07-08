@@ -14,10 +14,13 @@ if not, it returns {:error, :unauthorized}.
 
 ``` hoge_controller_policy.ex
 defmodule Sample.HogeControllerPolicy do
-  # ↓authorization function
+  # Authorization-Function
   def update(user: user, clip: clip) do
     user.id == clip.user_id
   end
+
+  # If this returns true. 'authorize' function in your controller returns {:ok, nil}
+  # If this returns false 'authorize' function in your controller returns {:error, :unauthorized}
 end
 
 ```
@@ -35,11 +38,11 @@ defmodule Sample.HogeController do
   def update(conn, params) do
     with {:ok, clip} <- Hoge.fetch_clip(params.id),
          {:ok, _} <- authorize(:update, user: conn.assigns.current_user, clip: clip),
-         .....
+         ...
     do
-      ....
+      ...
     else
-      {:error, :unauthorized} -> ....
+      {:error, :unauthorized} -> ...
     end
   end
 end
