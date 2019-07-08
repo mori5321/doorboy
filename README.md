@@ -3,7 +3,7 @@
 Doorboy is a simple and lightweight library for authorization.
 
 ## Usage
-#### 1. Define policy file for each Controller. And define Authorization-Function.
+### 1. Define policy file for each Controller. And define Authorization-Function.
 
 Authorization-Function
 - can be freely naed
@@ -22,7 +22,7 @@ end
 
 ```
 
-#### 2. You can call your Authorization-Function in your controller with 'authorize'.
+### 2. You can call your Authorization-Function in your controller with 'authorize'.
 
 1. set "use Doorboy, policy: YourPolicyFile"  in your Controller
 2. call authorize method wherever you like.
