@@ -28,7 +28,7 @@ end
 ### 2. You can call your Authorization-Function in your controller with 'authorize'.
 
 1. set "use Doorboy, policy: YourPolicyFile"  in your Controller
-2. call authorize method wherever you like.
+2. call **authorize** method wherever you like.
 
 ``` hoge_controller.ex
 
@@ -37,7 +37,7 @@ defmodule Sample.HogeController do
 
   def update(conn, params) do
     with {:ok, clip} <- Hoge.fetch_clip(params.id),
-         {:ok, _} <- authorize(:update, user: conn.assigns.current_user, clip: clip),
+         {:ok, _} <- authorize(:update, user: conn.assigns.current_user, clip: clip), #authorize! 
          ...
     do
       ...
@@ -49,14 +49,25 @@ end
 
 ```
 
-authorize function returns {:ok, nil} if Sample.HogeControllerPolicy.update/2 returns true
-authorize function returns {:error, :unauthorized} if Sample.HogeControllerPolicy.update/2 returns false
+#### authorize/2
+authorize(authorize_function_name, opts)
+
+```
+authorize(:update, user: user, clips: clips)
+
+# returns {:ok, nil} or {:error, :unauthorized}
+```
 
 
-**※authorize!**
-You can also use "authorize!", which raises an AuthorizationError when AuthorizationFunction is false.
+#### authorize!/2
+authorize!(authorize_function_name, opts)
 
+```
+authorize!(:update, user: user, clips: clips)
 
+# returns {:ok, nil} or raise AuthorizationError
+
+```
 
 
 ## Installation
