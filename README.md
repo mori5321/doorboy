@@ -1,11 +1,64 @@
 # Doorboy
+## Description
+Doorboy is a simple and lightweight library for authorization.
 
-**TODO: Add description**
+## Usage
+#### 1. Define policy file for each Controller. And define Authorization-Function.
+
+Authorization-Function
+- can be freely naed
+- is recommended to be named with corresponding controller's action name. 
+
+if Authorization-Function returns true, it returns {:ok, nil}.
+if not, it returns {:error, :unauthorized}.
+
+```
+defmodule Sample.HogeControllerPolicy do
+  # ↓authorization function
+  def update(user: user, clip: clip) do
+    user.id == clip.user_id
+  end
+end
+
+```
+
+#### 2. You can call your Authorization-Function in your controller with 'authorize'.
+
+1. set "use Doorboy, policy: YourPolicyFile"  in your Controller
+2. call authorize method wherever you like.
+
+```
+
+defmodule Sample.HogeController do
+  use Doorboy, policy: Sample.HogeControllerPolicy
+
+  def update(conn, params) do
+    with {:ok, clip} <- Hoge.fetch_clip(params.id),
+         {:ok, _} <- authorize(:update, user: conn.assigns.current_user, clip: clip),
+         .....
+    do
+      ....
+    else
+      {:error, :unauthorized} -> ....
+    end
+  end
+end
+
+```
+
+authorize function returns {:ok, nil} if Sample.HogeControllerPolicy.update/2 returns true
+authorize function returns {:error, :unauthorized} if Sample.HogeControllerPolicy.update/2 returns false
+
+
+**※authorize!**
+You can also use "authorize!", which raises an AuthorizationError when AuthorizationFunction is false.
+
+
+
 
 ## Installation
 
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `doorman` to your list of dependencies in `mix.exs`:
+The package can be installed by adding `doorman` to your list of dependencies in `mix.exs`:
 
 ```elixir
 def deps do
