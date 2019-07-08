@@ -15,12 +15,12 @@ if not, it returns {:error, :unauthorized}.
 ``` hoge_controller_policy.ex
 defmodule Sample.HogeControllerPolicy do
   # Authorization-Function
+  #
+  # If this function returns true. 'authorize' function in your controller returns {:ok, nil}
+  # If this function returns false 'authorize' function in your controller returns {:error, :unauthorized}
   def update(user: user, clip: clip) do
     user.id == clip.user_id
   end
-
-  # If this returns true. 'authorize' function in your controller returns {:ok, nil}
-  # If this returns false 'authorize' function in your controller returns {:error, :unauthorized}
 end
 
 ```
