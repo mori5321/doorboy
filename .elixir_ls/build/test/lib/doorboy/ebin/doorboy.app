@@ -1,0 +1,11 @@
+{application,doorboy,
+             [{applications,[kernel,stdlib,elixir,logger]},
+              {description,"Simple and Light-Weight Library for Authorization made with Elixir\n"},
+              {modules,['Elixir.Doorboy','Elixir.Doorboy.Exception',
+                        'Elixir.Doorboy.Exception.UnauthorizedError',
+                        'Elixir.Fuga.Controllers.FeedController',
+                        'Elixir.Fuga.Feed',
+                        'Elixir.Fuga.Policies.FeedControllerPolicy',
+                        'Elixir.Fuga.User']},
+              {registered,[]},
+              {vsn,"0.1.0"}]}.
