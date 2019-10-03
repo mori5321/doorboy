@@ -1,4 +1,4 @@
-defmodule Fuga.Policies.FeedControllerPolicy do
+defmodule Sample.Policies.FeedControllerPolicy do
   def create(user: user, feed: feed) do
     user && user.id == feed.user_id
   end

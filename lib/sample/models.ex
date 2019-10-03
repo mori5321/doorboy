@@ -1,8 +1,8 @@
-defmodule Fuga.User do
+defmodule Sample.User do
   defstruct [:id]
 end
 
-defmodule Fuga.Feed do
+defmodule Sample.Feed do
   defstruct [:id, :user_id]
 end
 
