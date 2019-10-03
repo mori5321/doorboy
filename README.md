@@ -16,8 +16,8 @@ if not, it returns {:error, :unauthorized}.
 defmodule Sample.HogeControllerPolicy do
   # Authorization-Function
   #
-  # If this function returns true. 'authorize' function in your controller returns {:ok, nil}
-  # If this function returns false 'authorize' function in your controller returns {:error, :unauthorized}
+  # If this function returns true. Function 'authorize' in your controller returns {:ok, nil}
+  # If this function returns false . Function 'authorize' in your controller returns {:error, :unauthorized}
   def update(user: user, clip: clip) do
     user.id == clip.user_id
   end
